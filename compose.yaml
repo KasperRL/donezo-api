@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:15.17-trixie
+    container_name: donezo-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - donezo_pgdata:/var/lib/postgresql/data
+
+volumes:
+  donezo_pgdata:
